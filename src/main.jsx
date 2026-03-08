@@ -20,6 +20,7 @@ createRoot(document.getElementById("root")).render(
       }}
       publishableKey={PUBLISHABLE_KEY}
       afterSignOutUrl="/"
+      afterSignInUrl="/"
     >
       <App />
     </ClerkProvider>

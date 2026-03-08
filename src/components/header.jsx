@@ -14,13 +14,21 @@ const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
 
   const [search, setSearch] = useSearchParams();
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
 
   useEffect(() => {
-    if (search.get("sign-in")) {
+    const hasSignInParam = search.get("sign-in");
+    if (!isLoaded) return;
+    // If user just landed from OAuth with ?sign-in=true but is now signed in, clear URL and close modal
+    if (hasSignInParam && user) {
+      setSearch({}, { replace: true });
+      setShowSignIn(false);
+      return;
+    }
+    if (hasSignInParam && !user) {
       setShowSignIn(true);
     }
-  }, [search]);
+  }, [search, user, isLoaded, setSearch]);
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
