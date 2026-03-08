@@ -32,7 +32,7 @@ const JobCard = ({
     loading: loadingSavedJob,
     data: savedJob,
     fn: fnSavedJob,
-  } = useFetch(saveJob);
+  } = useFetch(saveJob, { alreadySaved: saved }); // ✅ pass alreadySaved here
 
   const handleSaveJob = async () => {
     await fnSavedJob({
@@ -57,8 +57,8 @@ const JobCard = ({
         <BarLoader className="mt-4" width={"100%"} color="#36d7b7" />
       )}
       <CardHeader className="flex">
-        <CardTitle className="flex justify-between font-bold">
-          {job.title}
+        <CardTitle className="flex justify-between font-bold w-full">
+          <span>{job.title}</span>
           {isMyJob && (
             <Trash2Icon
               fill="red"

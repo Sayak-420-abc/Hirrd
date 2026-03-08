@@ -24,3 +24,56 @@
   height: 100%;
   background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.9));
 }
+
+/* ── MDEditor toolbar fix (Tailwind preflight breaks flex layout) ── */
+.w-md-editor {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.w-md-editor-toolbar {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  padding: 4px 8px !important;
+}
+
+.w-md-editor-toolbar ul {
+  display: flex !important;
+  flex-direction: row !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.w-md-editor-toolbar li {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.w-md-editor-content {
+  display: flex !important;
+  flex: 1 !important;
+}
+
+/* ── MDEditor markdown render fix ── */
+.wmde-markdown ul,
+.wmde-markdown-var ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin: 0.5rem 0 !important;
+}
+
+.wmde-markdown ol,
+.wmde-markdown-var ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin: 0.5rem 0 !important;
+}
+
+.wmde-markdown li,
+.wmde-markdown-var li {
+  display: list-item !important;
+  margin: 0.25rem 0 !important;
+}

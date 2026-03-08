@@ -50,6 +50,10 @@ const JobPage = () => {
     return <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />;
   }
 
+  const statusClass = job?.isOpen
+    ? "bg-green-950 text-green-300 border-green-800"
+    : "bg-red-950 text-red-300 border-red-800";
+
   return (
     <div className="flex flex-col gap-8 mt-5">
       <div className="flex flex-col-reverse gap-6 md:flex-row justify-between items-center">
@@ -81,9 +85,7 @@ const JobPage = () => {
 
       {job?.recruiter_id === user?.id && (
         <Select onValueChange={handleStatusChange}>
-          <SelectTrigger
-            className={`w-full ${job?.isOpen ? "bg-green-950" : "bg-red-950"}`}
-          >
+          <SelectTrigger className={`w-full ${statusClass}`}>
             <SelectValue
               placeholder={
                 "Hiring Status " + (job?.isOpen ? "( Open )" : "( Closed )")
@@ -103,10 +105,16 @@ const JobPage = () => {
       <h2 className="text-2xl sm:text-3xl font-bold">
         What we are looking for
       </h2>
-      <MDEditor.Markdown
-        source={job?.requirements}
-        className="bg-transparent sm:text-lg" // add global ul styles - tutorial
-      />
+      <div data-color-mode="dark">
+  <MDEditor.Markdown
+    source={job?.requirements}
+    style={{
+      background: "transparent",
+      color: "white",
+      fontSize: "1.125rem",    
+    }}
+  />
+</div>
       {job?.recruiter_id !== user?.id && (
         <ApplyJobDrawer
           job={job}
