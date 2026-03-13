@@ -31,12 +31,16 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-4 flex justify-between items-center">
+      <nav className="py-3 sm:py-4 flex items-center justify-between gap-3">
         <Link to="/">
-          <img src="/logo.png" className="h-20" alt="Hirrd Logo" />
+          <img
+            src="/logo.png"
+            className="h-12 sm:h-16 md:h-20"
+            alt="Hirrd Logo"
+          />
         </Link>
 
-        <div className="flex gap-8">
+        <div className="flex items-center gap-3 sm:gap-6">
           <SignedOut>
             <Button variant="outline" onClick={() => setShowSignIn(true)}>
               Login

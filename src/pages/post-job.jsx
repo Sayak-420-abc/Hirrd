@@ -88,7 +88,7 @@ const PostJob = () => {
 
   return (
     <div>
-      <h1 className="gradient-title font-extrabold text-5xl sm:text-7xl text-center pb-8">
+      <h1 className="gradient-title font-extrabold text-4xl sm:text-6xl md:text-7xl text-center pb-6 sm:pb-8">
         Post a Job
       </h1>
       <form
@@ -103,7 +103,7 @@ const PostJob = () => {
           <p className="text-red-500">{errors.description.message}</p>
         )}
 
-        <div className="flex gap-4 items-center">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-4 items-stretch md:items-center">
           <Controller
             name="location"
             control={control}

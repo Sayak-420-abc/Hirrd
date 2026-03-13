@@ -74,25 +74,29 @@ const JobListing = () => {
 
   return (
     <div className="">
-      <h1 className="gradient-title font-extrabold text-6xl sm:text-7xl text-center pb-8">
+      <h1 className="gradient-title font-extrabold text-4xl sm:text-6xl md:text-7xl text-center pb-6 sm:pb-8">
         Latest Jobs
       </h1>
       <form
         onSubmit={handleSearch}
-        className="h-14 flex flex-row w-full gap-2 items-center mb-3"
+        className="flex flex-col sm:flex-row w-full gap-2 sm:gap-3 items-stretch sm:items-center mb-4"
       >
         <Input
           type="text"
           placeholder="Search Jobs by Title.."
           name="search-query"
-          className="h-full flex-1  px-4 text-md"
+          className="h-12 sm:h-14 flex-1 px-4 text-sm sm:text-md"
         />
-        <Button type="submit" className="h-full sm:w-28" variant="blue">
+        <Button
+          type="submit"
+          className="h-11 sm:h-14 w-full sm:w-28"
+          variant="blue"
+        >
           Search
         </Button>
       </form>
 
-      <div className="flex flex-col sm:flex-row gap-2">
+      <div className="flex flex-col sm:flex-row gap-2 mt-1">
         <Select value={location} onValueChange={(value) => setLocation(value)}>
           <SelectTrigger>
             <SelectValue placeholder="Filter by Location" />
